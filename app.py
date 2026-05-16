@@ -25,7 +25,7 @@ st.markdown("""
     }
     /* Structure padding optimization */
     .block-container {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         padding-bottom: 3rem;
         max-width: 1200px;
     }
@@ -73,7 +73,7 @@ STRATEGIC_BINS = {
     "bin_4": {
         "tier": "The Foundation Re-Centering Phase (Score 45–59)",
         "bullets": [
-            "The profile presents as a loose collection of basic high school requirements rather than an ambitious, Hungry, and intentional academic trajectory.",
+            "The profile presents as a loose collection of basic high school requirements rather than an ambitious, hungry, and intentional academic trajectory.",
             "Academic milestones and testing indicators sit beneath competitive thresholds for highly selective research institutions."
         ],
         "roadmap": "Immediately establish your core profile archetype. Define whether your path is a high-ROI Specialist or a cross-functional Polymath. Every essay draft, independent project attempt, and activity alignment must anchor back to this single thematic core to rescue baseline file coherence."
@@ -99,6 +99,18 @@ STRATEGIC_BINS = {
 # ==========================================
 st.title("Admissions Competitiveness & Strategy Lab")
 st.markdown("---")
+
+# DAD'S FEEDBACK #1: Explicit operational guidance framework placed at the top entry gate
+st.markdown("""
+<div style="background-color: #1e222b; padding: 1.2rem; border-radius: 6px; margin-bottom: 2rem; border-left: 4px solid #ff4b4b;">
+    <h5 style="margin: 0 0 0.5rem 0; color: #ff4b4b;">Operational Guidance</h5>
+    <p style="margin: 0; font-size: 0.95rem; color: #fafafa; line-height: 1.4;">
+        Enter your explicit academic and profile data choices in the matrix below. The diagnostic engine will synthesize 
+        these variables to evaluate how your current achievements map to elite institutional thresholds, generating an 
+        authoritative, continuous <b>Strategic Optimization Roadmap</b> instead of an absolute judgment.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("### Profile Diagnostic Methodology & Framework")
 st.markdown(
@@ -135,90 +147,143 @@ with m_col3:
         unsafe_allow_html=True
     )
 
-st.markdown("""
-<div style="background-color: #1e222b; padding: 1rem; border-radius: 6px; margin-bottom: 2rem; border-left: 3px solid #ff4b4b;">
-    <p style="margin: 0; font-size: 0.9rem; color: #fafafa;">
-        <b>Operational Instructions:</b> Select the dropdown profiles that accurately match your current, verified achievements. 
-        Define your explicit target selective tier to generate an authoritative <b>Continuous Optimization Roadmap</b>.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
+# DAD'S FEEDBACK #2: Entire input structure bound into a single, unified analytical pass
 with st.form("master_profile_form"):
     st.subheader("Phase 1: Input Profile Matrix")
+    
+    # ------------------------------------------
+    # LEVEL 1: FOUNDATIONAL METRICS (2-COLUMN BALANCED LAYOUT)
+    # ------------------------------------------
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("**Academic & Institutional Foundations**")
+        st.markdown("#### **Academic Foundations**")
         
-        # Board/IB input incorporating explicit document benchmarks
+        st.markdown("<small style='color:#b0b3b8;'>Select your internal academic grading bracket. <i>Note: IB 39+ or equivalent is the standard competitive baseline for Ivy League considerations.</i></small>", unsafe_allow_html=True)
         gpa_choice = st.selectbox(
             "Internal Academic Performance Baseline (GPA / Board Marks)",
             options=[
-                "Elite Bracket: IB Score 39-42 / 4.0 GPA Tier (Minimum cutoff for competitive Ivy League considerations)",
-                "Target Bracket: IB Score 35-38 / GPA 3.3-3.6 Tier (Baseline for competitive majors or Top Tier Level 2 targets)",
-                "Developing Bracket: IB Score 32-34 / GPA 3.0-3.2 Tier (Standard target boundaries for Level 3 programs)",
+                "Elite Bracket: IB 39-42 / 4.0 GPA Tier",
+                "Target Bracket: IB 35-38 / GPA 3.3-3.6 Tier",
+                "Developing Bracket: IB 32-34 / GPA 3.0-3.2 Tier",
                 "Foundational Bracket: IB Score below 32"
-            ]
+            ],
+            label_visibility="collapsed"
         )
+        st.markdown("<br>", unsafe_allow_html=True)
         
-        # Standardized Testing Input with explicit document baselines
+        st.markdown("<small style='color:#b0b3b8;'>Standardized Testing Baseline. <i>Note: Scores below 1500 typically require heavy independent project offsets.</i></small>", unsafe_allow_html=True)
         sat_choice = st.selectbox(
             "Standardized Testing Baseline (SAT / ACT Equivalent)",
             options=[
-                "Top Tier Benchmark: SAT 1530-1600 / ACT 34-36 (Imperative for competitive profiles at Elite Universities)",
-                "Competitive Mid-Range: SAT 1500-1520 / ACT 33 (Requires exceptional GPA and project offsets to remain viable)",
-                "Target Baseline: SAT 1350-1490 / ACT 31-32 (Standard reach boundary for Level 2 institutions)",
+                "Top Tier Benchmark: SAT 1530-1600 / ACT 34-36",
+                "Competitive Mid-Range: SAT 1500-1520 / ACT 33",
+                "Target Baseline: SAT 1350-1490 / ACT 31-32",
                 "Developing Baseline: SAT below 1350 / ACT below 31"
-            ]
-        )
-        
-        school_tier_choice = st.selectbox(
-            "High School Institutional Context",
-            options=[
-                "Tier 1: Established International Feeder School (e.g., TISB, Mallya Aditi, highly recognized international tracks)",
-                "Tier 2: Competitive Regional/National Board School (e.g., established local CBSE/ICSE or state-level institutions)",
-                "Tier 3: Non-Traditional / Developing Local Infrastructure School"
-            ]
-        )
-        
-        target_tier_choice = st.selectbox(
-            "Target University Selective Threshold",
-            options=[
-                "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
-                "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
-                "Level 3 National Universities: Standard Global Multi-Universities"
-            ]
+            ],
+            label_visibility="collapsed"
         )
 
     with col2:
-        st.markdown("**Extracurricular Depth & Project Validation**")
+        st.markdown("#### **Institutional & Profile Archetype**")
         
-        # Profile Archetype selection
+        st.markdown("<small style='color:#b0b3b8;'>High School Institutional Context</small>", unsafe_allow_html=True)
+        school_tier_choice = st.selectbox(
+            "High School Institutional Context",
+            options=[
+                "Tier 1: Established International Feeder School (e.g., TISB, Mallya Aditi)",
+                "Tier 2: Competitive Regional/National Board School (CBSE/ICSE)",
+                "Tier 3: Non-Traditional / Developing Local Infrastructure School"
+            ],
+            label_visibility="collapsed"
+        )
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        st.markdown("<small style='color:#b0b3b8;'>Applicant Profile Archetype Structure</small>", unsafe_allow_html=True)
         archetype_choice = st.selectbox(
             "Applicant Profile Archetype Structure",
             options=[
-                "Specialist: Highly focused, early drive toward high-ROI STEM or Business/Finance pipelines with specialized goals",
-                "Polymath: Multi-talented, cross-functional profile with diverse interests requiring a unifying narrative thread",
-                "The Tree: Steady, patient growth trajectory; less initial academic drive but exceptional long-term adaptability"
-            ]
+                "Specialist: Highly focused, early drive toward high-ROI STEM/Finance pipelines",
+                "Polymath: Multi-talented, cross-functional profile requiring a unifying narrative",
+                "The Tree: Steady growth trajectory; exceptional long-term adaptability"
+            ],
+            label_visibility="collapsed"
         )
-        
-        # Project validation incorporating the document's burden-of-proof guidance
-        spike_choice = st.selectbox(
-            "Specialized Independent Projects & Verification (The 'Spike')",
-            options=[
-                "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
-                "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
-                "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
-                "Baseline Level: Standard high school club membership without documented external outcomes"
-            ]
-        )
-        
-        st.markdown("**Target Optimization & Client Profile Survey**")
-        intended_major = st.text_input("Intended Academic Major / Discipline Focus (e.g., Mathematics, Computer Science, Biology)")
-        financial_factor = st.radio("Are financial aid/cost considerations a deciding factor in your list strategy?", ["No", "Yes"])
 
+    st.markdown("---")
+
+    # ------------------------------------------
+    # LEVEL 2: STRATEGIC INFLECTION POINTS (FULL-WIDTH FOR MAXIMUM READABILITY & NO TEXT CLIPPING)
+    # ------------------------------------------
+    st.markdown("#### **Specialized Independent Projects & Verification (The 'Spike')**")
+    st.markdown(
+        "<p style='margin:0 0 0.5rem 0; font-size:0.85rem; color:#b0b3b8;'>"
+        "Elite admissions committees reject generic 'well-rounded' applicant files. Select the verification tier "
+        "that matches your highest external burden-of-proof milestone:</p>", 
+        unsafe_allow_html=True
+    )
+    spike_choice = st.selectbox(
+        "Specialized Independent Projects & Verification (The 'Spike')",
+        options=[
+            "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
+            "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
+            "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
+            "Baseline Level: Standard high school club membership without documented external outcomes"
+        ],
+        label_visibility="collapsed"
+    )
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    st.markdown("#### **Target University Selective Threshold**")
+    st.markdown(
+        "<p style='margin:0 0 0.5rem 0; font-size:0.85rem; color:#b0b3b8;'>"
+        "Define your target benchmark level. This choice directly calibrates the deficit scoring models and variance metrics "
+        "in your final roadmap analysis:</p>", 
+        unsafe_allow_html=True
+    )
+    target_tier_choice = st.selectbox(
+        "Target University Selective Threshold",
+        options=[
+            "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
+            "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
+            "Level 3 National Universities: Standard Global Multi-Universities"
+        ],
+        label_visibility="collapsed"
+    )
+
+    st.markdown("---")
+
+    # ------------------------------------------
+    # LEVEL 3: CLIENT BACKGROUND & SURVEY (2-COLUMN LAYOUT)
+    # ------------------------------------------
+    # DAD'S FEEDBACK #5 & #6: Expanded Target Context & Custom Constraint Survey Section
+    st.markdown("#### **Target Optimization & Customization Survey**")
+    col3, col4 = st.columns(2)
+    
+    with col3:
+        intended_major = st.text_input(
+            "Intended Academic Major / Discipline Focus", 
+            placeholder="e.g., Quantitative Finance, Computer Science, Biology"
+        )
+        survey_status = st.selectbox(
+            "University Goal Positioning Context",
+            options=[
+                "Highly Certain: Confirmed selection of explicit target institutions.",
+                "Exploratory: Decided on core disciplines but open to geographic/institutional variance.",
+                "Uncertain / Requires Structural Advisory: Seeking strategic clarity on major-to-university mapping."
+            ]
+        )
+
+    with col4:
+        financial_factor = st.radio(
+            "Are financial aid/overall cost constraints a deciding factor in your list strategy?", 
+            ["No", "Yes"]
+        )
+
+    st.markdown("<br>", unsafe_allow_html=True)
     submit_button = st.form_submit_button(label="Generate Profile Assessment & Strategic Roadmap")
 
 # ==========================================
@@ -229,28 +294,24 @@ if submit_button:
     st.subheader("Phase 2: Clinical Diagnostic Output")
     
     # 4.1 Deconstruct Selection Matrices to Quant Values
-    # GPA Translation
-    if "Elite Bracket" in gpa_choice: gpa_score = 95
+    if "Elite Bracket" in gpa_choice: gpa_score = 100
     elif "Target Bracket" in gpa_choice: gpa_score = 82
     elif "Developing Bracket" in gpa_choice: gpa_score = 68
     else: gpa_score = 50
 
-    # SAT Translation
-    if "Top Tier" in sat_choice: sat_score = 98
+    if "Top Tier" in sat_choice: sat_score = 100
     elif "Competitive" in sat_choice: sat_score = 88
     elif "Target Baseline" in sat_choice: sat_score = 75
     else: sat_score = 50
 
-    # High School Multiplier
     school_multiplier = 10 if "Tier 1" in school_tier_choice else (5 if "Tier 2" in school_tier_choice else 0)
     
-    # Spike Score Translation
     if "Elite" in spike_choice: spike_score = 10
     elif "Emerging" in spike_choice: spike_score = 7
     elif "Participation" in spike_choice: spike_score = 5
     else: spike_score = 2
 
-    # 4.2 Mathematical Synthesis Calculation
+    # 4.2 Mathematical Synthesis Calculation (Calibrated to achieve a clean 100 maximum)
     raw_score = (gpa_score * 0.4) + (sat_score * 0.3) + (spike_score * 2.0) + school_multiplier
     final_score = min(100.0, max(0.0, raw_score))
     
@@ -262,13 +323,12 @@ if submit_button:
     elif final_score >= 30: content = STRATEGIC_BINS["bin_5"]
     else: content = STRATEGIC_BINS["bin_6"]
         
-    # Calibration thresholds matching the target criteria
     threshold_map = {
         "Elite Ivy League Core": 92,
         "Level 2 Top Tier Targets": 78,
         "Level 3 National Universities": 60
     }
-    selected_target_clean = target_tier_choice.split(":")[0]
+    selected_target_clean = target_tier_choice.split(":")[0].strip()
     target_threshold = threshold_map.get(selected_target_clean, 78)
     variance = final_score - target_threshold
 
@@ -282,14 +342,32 @@ if submit_button:
         </div>
     """, unsafe_allow_html=True)
     
+    # DAD'S FEEDBACK #3: 3-4 Bullets of Qualitative Strategic Feedback
     st.markdown("#### Strategic Profile Evaluation")
     for bullet in content["bullets"]:
         st.markdown(f"* {bullet}")
         
+    # DAD'S FEEDBACK #4 & #5: Continuous Action Plan and Roadmap Optimization Notes
     st.markdown("#### Tactical Action Plan & Optimization Roadmap")
     st.success(content["roadmap"])
     
-    st.markdown("#### Target Match Optimization Note")
+    # Context Injection Module incorporating the Survey Matrix variables directly into output text
+    st.markdown("#### Custom Survey Context Calibration")
+    major_context = intended_major if intended_major else "Unspecified Academic Field"
+    
+    context_bullet_1 = f"**Major Calibration:** Evaluating your metrics within the strict context of **{major_context}**. Highly quantitative or high-ROI tracks will face increased review stringency regarding subject-specific grading subsets."
+    
+    if financial_factor == "Yes":
+        context_bullet_2 = "**Financial Strategy Constraint:** Financial aid considerations are active. Your institutional list strategy must prioritize aid-blind elite universities or institutions offering robust, merit-based tuition adjustments to minimize structural funding liabilities."
+    else:
+        context_bullet_2 = "**Financial Strategy Constraint:** Full-funding capability confirmed. Your strategic roadmap can confidently prioritize maximum institutional selection alignment without geographic or structural budgetary guardrails."
+
+    st.markdown(f"* {context_bullet_1}")
+    st.markdown(f"* {context_bullet_2}")
+    st.markdown(f"* **Goal Positioning Status:** Client profile is classified as *{survey_status.split(':')[0]}*.")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("#### Target Match Optimization Summary")
     if variance < 0:
         st.warning(
             f"Your current calculated profile index sits below the historical median threshold for {selected_target_clean}. "
@@ -299,7 +377,7 @@ if submit_button:
     else:
         st.info(
             f"Your profile mathematically aligns with or outpaces the baseline selective requirements for {selected_target_clean}. "
-            "Your operational priority must shift from metric accumulation to minimizing risk of yield-protection "
+            f"Your operational priority must shift from metric accumulation to minimizing risk of yield-protection "
             "rejections by explicitly validating your unique cultural and institutional fit through your supplemental essays."
         )
         
