@@ -182,7 +182,7 @@ if submit_button:
             <h4 style='margin:0; color:#ff4b4b;'>Synthesized Profile Competitiveness Index: {final_score:.1f} / 100</h4>
             <p style='margin:5px 0 0 0; font-size:0.9rem; color:#fafafa;'>Target Match Variance for {selected_target_clean}: <b>{variance:+.1f} points</b></p>
         </div>
-    """, unsafe_content_html=True)
+    """, unsafe_allow_html=True)
     
     st.markdown("#### Strategic Profile Evaluation")
     for bullet in content["bullets"]:
