@@ -37,33 +37,62 @@ st.markdown("""
         border-left: 5px solid #ff4b4b;
         margin-bottom: 1.5rem;
     }
-    /* Premium Segment Block Containers */
-    .section-card-gray {
-        background-color: #151922;
-        padding: 1.5rem;
+    
+    /* Premium High-Contrast Block Grouping Hooks */
+    [data-testid="stVerticalBlock"] > div:has(div.gray-card-marker) {
+        background-color: #11141a;
+        padding: 1.8rem;
         border-radius: 8px;
-        border-left: 4px solid #4b5563;
-        margin-bottom: 1.5rem;
+        border-left: 4px solid #60a5fa;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
-    .section-card-blue {
-        background-color: #151a26;
-        padding: 1.5rem;
+    [data-testid="stVerticalBlock"] > div:has(div.blue-card-marker) {
+        background-color: #11141a;
+        padding: 1.8rem;
         border-radius: 8px;
-        border-left: 4px solid #3b82f6;
-        margin-bottom: 1.5rem;
+        border-left: 4px solid #f59e0b;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
+    
     /* Label typography optimization */
     .input-header {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 600;
-        color: #fafafa;
+        color: #f3f4f6;
         margin-bottom: 0.2rem;
     }
     .input-subheader {
         font-size: 0.85rem;
-        color: #a1a1aa;
-        margin-bottom: 0.6rem;
-        line-height: 1.3;
+        color: #9ca3af;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    /* Section Title Layout Styling */
+    .section-title-blue {
+        color: #60a5fa;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .section-title-amber {
+        color: #f59e0b;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .section-desc {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-bottom: 1.5rem;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -166,108 +195,110 @@ with st.form("master_profile_form"):
     st.markdown("<br>", unsafe_allow_html=True)
     
     # ------------------------------------------
-    # SEGMENT 1: ACADEMIC & INSTITUTIONAL FOUNDATIONS (GRAY CARD)
+    # SEGMENT 1: ACADEMIC & INSTITUTIONAL FOUNDATIONS (BLUE HIGHLIGHT BORDER)
     # ------------------------------------------
-    st.markdown('<div class="section-card-gray">', unsafe_allow_html=True)
-    st.markdown("### 🏛️ Foundational Metrics & Institutional Context")
-    st.markdown("<p style='font-size:0.9rem; color:#a1a1aa; margin-bottom:1.5rem;'>Establish the core quantitative baselines and historical high school context that dictate programmatic sorting filters.</p>", unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown('<div class="input-header">Internal Academic Performance Baseline</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">Select your cumulative internal school grading bracket. <i>Note: IB 39+ is the standard elite cutoff.</i></div>', unsafe_allow_html=True)
-        gpa_choice = st.selectbox(
-            "GPA",
-            options=[
-                "Elite Bracket: IB 39-42 / 4.0 GPA Tier",
-                "Target Bracket: IB 35-38 / GPA 3.3-3.6 Tier",
-                "Developing Bracket: IB 32-34 / GPA 3.0-3.2 Tier",
-                "Foundational Bracket: IB Score below 32"
-            ],
-            label_visibility="collapsed"
-        )
-        st.markdown("<br>", unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="gray-card-marker"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title-blue">🏛️ Foundational Metrics & Institutional Context</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-desc">Establish the core quantitative baselines and historical high school context that dictate programmatic sorting filters.</div>', unsafe_allow_html=True)
         
-        st.markdown('<div class="input-header">Standardized Testing Baseline</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">Highest achieved SAT or ACT equivalent. Scores under 1500 typically require heavy project offsets.</div>', unsafe_allow_html=True)
-        sat_choice = st.selectbox(
-            "SAT",
-            options=[
-                "Top Tier Benchmark: SAT 1530-1600 / ACT 34-36",
-                "Competitive Mid-Range: SAT 1500-1520 / ACT 33",
-                "Target Baseline: SAT 1350-1490 / ACT 31-32",
-                "Developing Baseline: SAT below 1350 / ACT below 31"
-            ],
-            label_visibility="collapsed"
-        )
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown('<div class="input-header">Internal Academic Performance Baseline</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">Select your cumulative internal school grading bracket. <i>Note: IB 39+ is the standard elite cutoff.</i></div>', unsafe_allow_html=True)
+            gpa_choice = st.selectbox(
+                "GPA",
+                options=[
+                    "Elite Bracket: IB 39-42 / 4.0 GPA Tier",
+                    "Target Bracket: IB 35-38 / GPA 3.3-3.6 Tier",
+                    "Developing Bracket: IB 32-34 / GPA 3.0-3.2 Tier",
+                    "Foundational Bracket: IB Score below 32"
+                ],
+                label_visibility="collapsed"
+            )
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            st.markdown('<div class="input-header">Standardized Testing Baseline</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">Highest achieved SAT or ACT equivalent. Scores under 1500 typically require heavy project offsets.</div>', unsafe_allow_html=True)
+            sat_choice = st.selectbox(
+                "SAT",
+                options=[
+                    "Top Tier Benchmark: SAT 1530-1600 / ACT 34-36",
+                    "Competitive Mid-Range: SAT 1500-1520 / ACT 33",
+                    "Target Baseline: SAT 1350-1490 / ACT 31-32",
+                    "Developing Baseline: SAT below 1350 / ACT below 31"
+                ],
+                label_visibility="collapsed"
+            )
 
-    with col2:
-        st.markdown('<div class="input-header">High School Institutional Context</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">The historical placement and profile strength of your secondary school institution.</div>', unsafe_allow_html=True)
-        school_tier_choice = st.selectbox(
-            "School Tier",
-            options=[
-                "Tier 1: Established International Feeder School (e.g., TISB, Mallya Aditi)",
-                "Tier 2: Competitive Regional/National Board School (CBSE/ICSE)",
-                "Tier 3: Non-Traditional / Developing Local Infrastructure School"
-            ],
-            label_visibility="collapsed"
-        )
-        st.markdown("<br>", unsafe_allow_html=True)
-        
-        st.markdown('<div class="input-header">Applicant Profile Archetype Structure</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">The thematic angle defining your personal layout (e.g., hyper-focused specialist vs multi-disciplinary).</div>', unsafe_allow_html=True)
-        archetype_choice = st.selectbox(
-            "Archetype",
-            options=[
-                "Specialist: Highly focused, early drive toward high-ROI STEM/Finance pipelines",
-                "Polymath: Multi-talented, cross-functional profile requiring a unifying narrative",
-                "The Tree: Steady growth trajectory; exceptional long-term adaptability"
-            ],
-            label_visibility="collapsed"
-        )
-    st.markdown('</div>', unsafe_allow_html=True) # End Gray Card
+        with col2:
+            st.markdown('<div class="input-header">High School Institutional Context</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">The historical placement and profile strength of your secondary school institution.</div>', unsafe_allow_html=True)
+            school_tier_choice = st.selectbox(
+                "School Tier",
+                options=[
+                    "Tier 1: Established International Feeder School (e.g., TISB, Mallya Aditi)",
+                    "Tier 2: Competitive Regional/National Board School (CBSE/ICSE)",
+                    "Tier 3: Non-Traditional / Developing Local Infrastructure School"
+                ],
+                label_visibility="collapsed"
+            )
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            st.markdown('<div class="input-header">Applicant Profile Archetype Structure</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">The thematic angle defining your personal layout (e.g., hyper-focused specialist vs multi-disciplinary).</div>', unsafe_allow_html=True)
+            archetype_choice = st.selectbox(
+                "Archetype",
+                options=[
+                    "Specialist: Highly focused, early drive toward high-ROI STEM/Finance pipelines",
+                    "Polymath: Multi-talented, cross-functional profile requiring a unifying narrative",
+                    "The Tree: Steady growth trajectory; exceptional long-term adaptability"
+                ],
+                label_visibility="collapsed"
+            )
+
+    st.markdown("<br>", unsafe_allow_html=True)
 
     # ------------------------------------------
-    # SEGMENT 2: STRATEGIC INFLECTION POINTS (BLUE CARD - SIDE BY SIDE WIDE LAYOUT)
+    # SEGMENT 2: STRATEGIC INFLECTION POINTS (AMBER HIGHLIGHT BORDER)
     # ------------------------------------------
-    st.markdown('<div class="section-card-blue">', unsafe_allow_html=True)
-    st.markdown("### ⚡ Strategic Target & Narrative Inflection Points")
-    st.markdown("<p style='font-size:0.9rem; color:#a1a1aa; margin-bottom:1.5rem;'>These decisions weigh heavily on the predictive deficit models. Wide layout balances clarity and text safety.</p>", unsafe_allow_html=True)
-    
-    strat_col1, strat_col2 = st.columns(2)
-    with strat_col1:
-        st.markdown('<div class="input-header">Specialized Independent Projects & Verification (The \'Spike\')</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">Select the external verification or peer-review tier matching your highest independent project milestone.</div>', unsafe_allow_html=True)
-        spike_choice = st.selectbox(
-            "Spike",
-            options=[
-                "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
-                "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
-                "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
-                "Baseline Level: Standard high school club membership without documented external outcomes"
-            ],
-            label_visibility="collapsed"
-        )
+    with st.container():
+        st.markdown('<div class="blue-card-marker"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title-amber">⚡ Strategic Target & Narrative Inflection Points</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-desc">These decisions weigh heavily on the predictive deficit models. Wide layout balances clarity and text safety.</div>', unsafe_allow_html=True)
         
-    with strat_col2:
-        st.markdown('<div class="input-header">Target University Selective Threshold</div>', unsafe_allow_html=True)
-        st.markdown('<div class="input-subheader">Define your explicit institutional goal. This actively maps your score variations and baseline target deficits.</div>', unsafe_allow_html=True)
-        target_tier_choice = st.selectbox(
-            "Target Tier",
-            options=[
-                "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
-                "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
-                "Level 3 National Universities: Standard Global Multi-Universities"
-            ],
-            label_visibility="collapsed"
-        )
-    st.markdown('</div>', unsafe_allow_html=True) # End Blue Card
+        strat_col1, strat_col2 = st.columns(2)
+        with strat_col1:
+            st.markdown('<div class="input-header">Specialized Independent Projects & Verification (The \'Spike\')</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">Select the external verification or peer-review tier matching your highest independent project milestone.</div>', unsafe_allow_html=True)
+            spike_choice = st.selectbox(
+                "Spike",
+                options=[
+                    "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
+                    "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
+                    "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
+                    "Baseline Level: Standard high school club membership without documented external outcomes"
+                ],
+                label_visibility="collapsed"
+            )
+            
+        with strat_col2:
+            st.markdown('<div class="input-header">Target University Selective Threshold</div>', unsafe_allow_html=True)
+            st.markdown('<div class="input-subheader">Define your explicit institutional goal. This actively maps your score variations and baseline target deficits.</div>', unsafe_allow_html=True)
+            target_tier_choice = st.selectbox(
+                "Target Tier",
+                options=[
+                    "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
+                    "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
+                    "Level 3 National Universities: Standard Global Multi-Universities"
+                ],
+                label_visibility="collapsed"
+            )
 
     st.markdown("<br>", unsafe_allow_html=True)
     
     # ------------------------------------------
-    # INLINE SURVEY ROUTING COMPONENT (REPLACES PASSIVE SURVEY CARD)
+    # BOTTOM FIELD INTAKE
     # ------------------------------------------
     st.markdown('<div class="input-header">Intended Academic Major / Discipline Focus</div>', unsafe_allow_html=True)
     intended_major = st.text_input(
@@ -350,9 +381,7 @@ if submit_button:
     else:
         st.info(f"Your profile mathematically aligns with or outpaces the baseline selective requirements for {selected_target_clean}. Your operational priority must shift from metric accumulation to minimizing risk of yield-protection rejections by explicitly validating your unique cultural and institutional fit through your supplemental essays.")
         
-    # ==========================================
-    # 5. DAD'S FEEDBACK #6: EXTERNAL SURVEY LINK MODULE
-    # ==========================================
+    # Lead Catchment/Survey Route Module
     st.markdown("---")
     st.subheader("Request Bespoke Profile Optimization Plan")
     st.markdown(
@@ -361,7 +390,6 @@ if submit_button:
         "written feedback, launch our deep-dive custom diagnostic profile engine below."
     )
     
-    # Replace the string below with your actual production Google Forms URL
     google_form_url = "https://forms.google.com" 
     
     st.link_button(
