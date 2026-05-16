@@ -38,7 +38,7 @@ st.markdown("""
         margin-bottom: 1.5rem;
     }
     </style>
-""", unsafe_content_html=True)
+""", unsafe_allow_html=True)
 
 # ==========================================
 # 2. THE CORE STRATEGIC DICTIONARY (HIGH-AUTHORITY COPY)
