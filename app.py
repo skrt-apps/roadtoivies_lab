@@ -37,11 +37,39 @@ st.markdown("""
         border-left: 5px solid #ff4b4b;
         margin-bottom: 1.5rem;
     }
+    /* Premium Segment Block Containers */
+    .section-card-gray {
+        background-color: #151922;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #4b5563;
+        margin-bottom: 1.5rem;
+    }
+    .section-card-blue {
+        background-color: #151a26;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #3b82f6;
+        margin-bottom: 1.5rem;
+    }
+    /* Label typography optimization */
+    .input-header {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fafafa;
+        margin-bottom: 0.2rem;
+    }
+    .input-subheader {
+        font-size: 0.85rem;
+        color: #a1a1aa;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
+    }
     </style>
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 2. THE STRATEGIC NARRATIVE DICTIONARY (FROM COLLEGE.DOCX)
+# 2. THE STRATEGIC NARRATIVE DICTIONARY
 # ==========================================
 STRATEGIC_BINS = {
     "bin_1": {
@@ -100,7 +128,6 @@ STRATEGIC_BINS = {
 st.title("Admissions Competitiveness & Strategy Lab")
 st.markdown("---")
 
-# DAD'S FEEDBACK #1: Explicit operational guidance framework placed at the top entry gate
 st.markdown("""
 <div style="background-color: #1e222b; padding: 1.2rem; border-radius: 6px; margin-bottom: 2rem; border-left: 4px solid #ff4b4b;">
     <h5 style="margin: 0 0 0.5rem 0; color: #ff4b4b;">Operational Guidance</h5>
@@ -120,50 +147,37 @@ st.markdown(
     "on narrative differentiation, subject-specific alignment, and verified project spikes."
 )
 
-# Multi-column methodological breakdown
 m_col1, m_col2, m_col3 = st.columns(3)
-
 with m_col1:
     st.markdown("##### **1. Quantitative Thresholds**")
-    st.markdown(
-        "<small>Internal marks and standardized tests are measured against elite baselines (e.g., SAT 1530+, IB 39+/42). "
-        "Clearing this gate ensures your file is read, but metrics alone do not guarantee admission.</small>", 
-        unsafe_allow_html=True
-    )
-
+    st.markdown("<small>Internal marks and standardized tests are measured against elite baselines (e.g., SAT 1530+, IB 39+/42). Clearing this gate ensures your file is read.</small>", unsafe_allow_html=True)
 with m_col2:
     st.markdown("##### **2. Major Calibration & Rigor**")
-    st.markdown(
-        "<small>Universities analyze subject-specific grades relative to your intended major. A lower grade in a core discipline "
-        "causes an automatic rejection, even if your overall cumulative GPA appears competitive.</small>", 
-        unsafe_allow_html=True
-    )
-
+    st.markdown("<small>Universities analyze subject-specific grades relative to your intended major. A lower grade in a core discipline causes automatic rejection.</small>", unsafe_allow_html=True)
 with m_col3:
     st.markdown("##### **3. The Narrative Spike**")
-    st.markdown(
-        "<small>Elite programs reject 'well-rounded' applications. The tool heavily weights independent, publicly "
-        "verifiable projects (e.g., GitHub code bases, publications) over passive school club memberships.</small>", 
-        unsafe_allow_html=True
-    )
+    st.markdown("<small>Elite programs reject 'well-rounded' applications. The tool heavily weights independent, publicly verifiable projects over passive memberships.</small>", unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# DAD'S FEEDBACK #2: Entire input structure bound into a single, unified analytical pass
+# BEGIN FORM EXECUTION
 with st.form("master_profile_form"):
     st.subheader("Phase 1: Input Profile Matrix")
+    st.markdown("<br>", unsafe_allow_html=True)
     
     # ------------------------------------------
-    # LEVEL 1: FOUNDATIONAL METRICS (2-COLUMN BALANCED LAYOUT)
+    # SEGMENT 1: ACADEMIC & INSTITUTIONAL FOUNDATIONS (GRAY CARD)
     # ------------------------------------------
+    st.markdown('<div class="section-card-gray">', unsafe_allow_html=True)
+    st.markdown("### 🏛️ Foundational Metrics & Institutional Context")
+    st.markdown("<p style='font-size:0.9rem; color:#a1a1aa; margin-bottom:1.5rem;'>Establish the core quantitative baselines and historical high school context that dictate programmatic sorting filters.</p>", unsafe_allow_html=True)
+    
     col1, col2 = st.columns(2)
-    
     with col1:
-        st.markdown("#### **Academic Foundations**")
-        
-        st.markdown("<small style='color:#b0b3b8;'>Select your internal academic grading bracket. <i>Note: IB 39+ or equivalent is the standard competitive baseline for Ivy League considerations.</i></small>", unsafe_allow_html=True)
+        st.markdown('<div class="input-header">Internal Academic Performance Baseline</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">Select your cumulative internal school grading bracket. <i>Note: IB 39+ is the standard elite cutoff.</i></div>', unsafe_allow_html=True)
         gpa_choice = st.selectbox(
-            "Internal Academic Performance Baseline (GPA / Board Marks)",
+            "GPA",
             options=[
                 "Elite Bracket: IB 39-42 / 4.0 GPA Tier",
                 "Target Bracket: IB 35-38 / GPA 3.3-3.6 Tier",
@@ -174,9 +188,10 @@ with st.form("master_profile_form"):
         )
         st.markdown("<br>", unsafe_allow_html=True)
         
-        st.markdown("<small style='color:#b0b3b8;'>Standardized Testing Baseline. <i>Note: Scores below 1500 typically require heavy independent project offsets.</i></small>", unsafe_allow_html=True)
+        st.markdown('<div class="input-header">Standardized Testing Baseline</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">Highest achieved SAT or ACT equivalent. Scores under 1500 typically require heavy project offsets.</div>', unsafe_allow_html=True)
         sat_choice = st.selectbox(
-            "Standardized Testing Baseline (SAT / ACT Equivalent)",
+            "SAT",
             options=[
                 "Top Tier Benchmark: SAT 1530-1600 / ACT 34-36",
                 "Competitive Mid-Range: SAT 1500-1520 / ACT 33",
@@ -187,11 +202,10 @@ with st.form("master_profile_form"):
         )
 
     with col2:
-        st.markdown("#### **Institutional & Profile Archetype**")
-        
-        st.markdown("<small style='color:#b0b3b8;'>High School Institutional Context</small>", unsafe_allow_html=True)
+        st.markdown('<div class="input-header">High School Institutional Context</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">The historical placement and profile strength of your secondary school institution.</div>', unsafe_allow_html=True)
         school_tier_choice = st.selectbox(
-            "High School Institutional Context",
+            "School Tier",
             options=[
                 "Tier 1: Established International Feeder School (e.g., TISB, Mallya Aditi)",
                 "Tier 2: Competitive Regional/National Board School (CBSE/ICSE)",
@@ -201,9 +215,10 @@ with st.form("master_profile_form"):
         )
         st.markdown("<br>", unsafe_allow_html=True)
         
-        st.markdown("<small style='color:#b0b3b8;'>Applicant Profile Archetype Structure</small>", unsafe_allow_html=True)
+        st.markdown('<div class="input-header">Applicant Profile Archetype Structure</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">The thematic angle defining your personal layout (e.g., hyper-focused specialist vs multi-disciplinary).</div>', unsafe_allow_html=True)
         archetype_choice = st.selectbox(
-            "Applicant Profile Archetype Structure",
+            "Archetype",
             options=[
                 "Specialist: Highly focused, early drive toward high-ROI STEM/Finance pipelines",
                 "Polymath: Multi-talented, cross-functional profile requiring a unifying narrative",
@@ -211,79 +226,57 @@ with st.form("master_profile_form"):
             ],
             label_visibility="collapsed"
         )
-
-    st.markdown("---")
-
-    # ------------------------------------------
-    # LEVEL 2: STRATEGIC INFLECTION POINTS (FULL-WIDTH FOR MAXIMUM READABILITY & NO TEXT CLIPPING)
-    # ------------------------------------------
-    st.markdown("#### **Specialized Independent Projects & Verification (The 'Spike')**")
-    st.markdown(
-        "<p style='margin:0 0 0.5rem 0; font-size:0.85rem; color:#b0b3b8;'>"
-        "Elite admissions committees reject generic 'well-rounded' applicant files. Select the verification tier "
-        "that matches your highest external burden-of-proof milestone:</p>", 
-        unsafe_allow_html=True
-    )
-    spike_choice = st.selectbox(
-        "Specialized Independent Projects & Verification (The 'Spike')",
-        options=[
-            "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
-            "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
-            "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
-            "Baseline Level: Standard high school club membership without documented external outcomes"
-        ],
-        label_visibility="collapsed"
-    )
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    st.markdown("#### **Target University Selective Threshold**")
-    st.markdown(
-        "<p style='margin:0 0 0.5rem 0; font-size:0.85rem; color:#b0b3b8;'>"
-        "Define your target benchmark level. This choice directly calibrates the deficit scoring models and variance metrics "
-        "in your final roadmap analysis:</p>", 
-        unsafe_allow_html=True
-    )
-    target_tier_choice = st.selectbox(
-        "Target University Selective Threshold",
-        options=[
-            "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
-            "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
-            "Level 3 National Universities: Standard Global Multi-Universities"
-        ],
-        label_visibility="collapsed"
-    )
-
-    st.markdown("---")
+    st.markdown('</div>', unsafe_allow_html=True) # End Gray Card
 
     # ------------------------------------------
-    # LEVEL 3: CLIENT BACKGROUND & SURVEY (2-COLUMN LAYOUT)
+    # SEGMENT 2: STRATEGIC INFLECTION POINTS (BLUE CARD - SIDE BY SIDE WIDE LAYOUT)
     # ------------------------------------------
-    # DAD'S FEEDBACK #5 & #6: Expanded Target Context & Custom Constraint Survey Section
-    st.markdown("#### **Target Optimization & Customization Survey**")
-    col3, col4 = st.columns(2)
+    st.markdown('<div class="section-card-blue">', unsafe_allow_html=True)
+    st.markdown("### ⚡ Strategic Target & Narrative Inflection Points")
+    st.markdown("<p style='font-size:0.9rem; color:#a1a1aa; margin-bottom:1.5rem;'>These decisions weigh heavily on the predictive deficit models. Wide layout balances clarity and text safety.</p>", unsafe_allow_html=True)
     
-    with col3:
-        intended_major = st.text_input(
-            "Intended Academic Major / Discipline Focus", 
-            placeholder="e.g., Quantitative Finance, Computer Science, Biology"
-        )
-        survey_status = st.selectbox(
-            "University Goal Positioning Context",
+    strat_col1, strat_col2 = st.columns(2)
+    with strat_col1:
+        st.markdown('<div class="input-header">Specialized Independent Projects & Verification (The \'Spike\')</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">Select the external verification or peer-review tier matching your highest independent project milestone.</div>', unsafe_allow_html=True)
+        spike_choice = st.selectbox(
+            "Spike",
             options=[
-                "Highly Certain: Confirmed selection of explicit target institutions.",
-                "Exploratory: Decided on core disciplines but open to geographic/institutional variance.",
-                "Uncertain / Requires Structural Advisory: Seeking strategic clarity on major-to-university mapping."
-            ]
+                "Elite Validation: Peer-reviewed publication co-authored with academic experts, or selection to premier merit tracks (e.g., SSP)",
+                "Emerging Validation: Independent technical development with a public codebase (GitHub), active thesis drafting, or local lab internship",
+                "Participation Level: Long-term community volunteering, student council leadership, or local event organization",
+                "Baseline Level: Standard high school club membership without documented external outcomes"
+            ],
+            label_visibility="collapsed"
         )
-
-    with col4:
-        financial_factor = st.radio(
-            "Are financial aid/overall cost constraints a deciding factor in your list strategy?", 
-            ["No", "Yes"]
+        
+    with strat_col2:
+        st.markdown('<div class="input-header">Target University Selective Threshold</div>', unsafe_allow_html=True)
+        st.markdown('<div class="input-subheader">Define your explicit institutional goal. This actively maps your score variations and baseline target deficits.</div>', unsafe_allow_html=True)
+        target_tier_choice = st.selectbox(
+            "Target Tier",
+            options=[
+                "Elite Ivy League Core: Hyper-Selective Targets (Princeton, Harvard, Yale, Stanford, MIT, Caltech)",
+                "Level 2 Top Tier Targets: Competitive Global Universities (UC Berkeley, CMU, NYU, Columbia, Cornell, UCLA)",
+                "Level 3 National Universities: Standard Global Multi-Universities"
+            ],
+            label_visibility="collapsed"
         )
+    st.markdown('</div>', unsafe_allow_html=True) # End Blue Card
 
     st.markdown("<br>", unsafe_allow_html=True)
+    
+    # ------------------------------------------
+    # INLINE SURVEY ROUTING COMPONENT (REPLACES PASSIVE SURVEY CARD)
+    # ------------------------------------------
+    st.markdown('<div class="input-header">Intended Academic Major / Discipline Focus</div>', unsafe_allow_html=True)
+    intended_major = st.text_input(
+        "Major Input", 
+        placeholder="e.g., Quantitative Finance, Computer Science, Biology",
+        label_visibility="collapsed"
+    )
+    st.markdown("<br>", unsafe_allow_html=True)
+
     submit_button = st.form_submit_button(label="Generate Profile Assessment & Strategic Roadmap")
 
 # ==========================================
@@ -293,7 +286,7 @@ if submit_button:
     st.markdown("---")
     st.subheader("Phase 2: Clinical Diagnostic Output")
     
-    # 4.1 Deconstruct Selection Matrices to Quant Values
+    # Math Synthesis Calculations
     if "Elite Bracket" in gpa_choice: gpa_score = 100
     elif "Target Bracket" in gpa_choice: gpa_score = 82
     elif "Developing Bracket" in gpa_choice: gpa_score = 68
@@ -305,17 +298,14 @@ if submit_button:
     else: sat_score = 50
 
     school_multiplier = 10 if "Tier 1" in school_tier_choice else (5 if "Tier 2" in school_tier_choice else 0)
-    
     if "Elite" in spike_choice: spike_score = 10
     elif "Emerging" in spike_choice: spike_score = 7
     elif "Participation" in spike_choice: spike_score = 5
     else: spike_score = 2
 
-    # 4.2 Mathematical Synthesis Calculation (Calibrated to achieve a clean 100 maximum)
     raw_score = (gpa_score * 0.4) + (sat_score * 0.3) + (spike_score * 2.0) + school_multiplier
     final_score = min(100.0, max(0.0, raw_score))
     
-    # 4.3 Score Bin Router Logic
     if final_score >= 90: content = STRATEGIC_BINS["bin_1"]
     elif final_score >= 75: content = STRATEGIC_BINS["bin_2"]
     elif final_score >= 60: content = STRATEGIC_BINS["bin_3"]
@@ -332,9 +322,8 @@ if submit_button:
     target_threshold = threshold_map.get(selected_target_clean, 78)
     variance = final_score - target_threshold
 
-    # 4.4 Render Production Interface
+    # Render Interface Outputs
     st.markdown(f"### Current Diagnostic Status: **{content['tier']}**")
-    
     st.markdown(f"""
         <div class="metric-box">
             <h4 style='margin:0; color:#ff4b4b;'>Synthesized Profile Competitiveness Index: {final_score:.1f} / 100</h4>
@@ -342,58 +331,41 @@ if submit_button:
         </div>
     """, unsafe_allow_html=True)
     
-    # DAD'S FEEDBACK #3: 3-4 Bullets of Qualitative Strategic Feedback
     st.markdown("#### Strategic Profile Evaluation")
     for bullet in content["bullets"]:
         st.markdown(f"* {bullet}")
         
-    # DAD'S FEEDBACK #4 & #5: Continuous Action Plan and Roadmap Optimization Notes
     st.markdown("#### Tactical Action Plan & Optimization Roadmap")
     st.success(content["roadmap"])
     
-    # Context Injection Module incorporating the Survey Matrix variables directly into output text
     st.markdown("#### Custom Survey Context Calibration")
     major_context = intended_major if intended_major else "Unspecified Academic Field"
-    
-    context_bullet_1 = f"**Major Calibration:** Evaluating your metrics within the strict context of **{major_context}**. Highly quantitative or high-ROI tracks will face increased review stringency regarding subject-specific grading subsets."
-    
-    if financial_factor == "Yes":
-        context_bullet_2 = "**Financial Strategy Constraint:** Financial aid considerations are active. Your institutional list strategy must prioritize aid-blind elite universities or institutions offering robust, merit-based tuition adjustments to minimize structural funding liabilities."
-    else:
-        context_bullet_2 = "**Financial Strategy Constraint:** Full-funding capability confirmed. Your strategic roadmap can confidently prioritize maximum institutional selection alignment without geographic or structural budgetary guardrails."
-
+    context_bullet_1 = f"**Major Calibration:** Evaluating metrics within the strict context of **{major_context}**. Highly quantitative or high-ROI tracks will face increased review stringency regarding subject-specific grading subsets."
     st.markdown(f"* {context_bullet_1}")
-    st.markdown(f"* {context_bullet_2}")
-    st.markdown(f"* **Goal Positioning Status:** Client profile is classified as *{survey_status.split(':')[0]}*.")
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### Target Match Optimization Summary")
     if variance < 0:
-        st.warning(
-            f"Your current calculated profile index sits below the historical median threshold for {selected_target_clean}. "
-            f"To optimize this action plan and bridge this {abs(variance):.1f}-point deficit, you must execute the "
-            "recommended roadmap steps with immediate, maximum intensity over the coming academic cycle."
-        )
+        st.warning(f"Your current calculated profile index sits below the historical median threshold for {selected_target_clean}. To optimize this action plan and bridge this {abs(variance):.1f}-point deficit, you must execute the recommended roadmap steps with immediate, maximum intensity over the coming academic cycle.")
     else:
-        st.info(
-            f"Your profile mathematically aligns with or outpaces the baseline selective requirements for {selected_target_clean}. "
-            f"Your operational priority must shift from metric accumulation to minimizing risk of yield-protection "
-            "rejections by explicitly validating your unique cultural and institutional fit through your supplemental essays."
-        )
+        st.info(f"Your profile mathematically aligns with or outpaces the baseline selective requirements for {selected_target_clean}. Your operational priority must shift from metric accumulation to minimizing risk of yield-protection rejections by explicitly validating your unique cultural and institutional fit through your supplemental essays.")
         
-    # Lead Catchment Module
+    # ==========================================
+    # 5. DAD'S FEEDBACK #6: EXTERNAL SURVEY LINK MODULE
+    # ==========================================
     st.markdown("---")
     st.subheader("Request Bespoke Profile Optimization Plan")
     st.markdown(
-        "To customize this continuous roadmap based on your selected major context, specific university preferences, "
-        "or complex financial constraints, initiate a formal profile expansion review below."
+        "If you are seeking strategic clarity on major-to-university mapping, or want to submit an extensive text overview "
+        "covering localized background nuances, financial considerations, or institutional list safety for personalized "
+        "written feedback, launch our deep-dive custom diagnostic profile engine below."
     )
-    with st.expander("Submit Profile Metrics for Human Consultation Review"):
-        with st.form("lead_generation_form"):
-            user_name = st.text_input("Parent / Student Representative Name")
-            contact_email = st.text_input("Primary Communication Email Address")
-            specific_queries = st.text_area("Detail any specific concerns, university restrictions, or legacy considerations:")
-            
-            submit_lead = st.form_submit_button("Request Premium Strategy Alignment Analysis")
-            if submit_lead:
-                st.success("Your comprehensive diagnostic matrix has been securely logged. An advisor will contact you within 24 business hours.")
+    
+    # Replace the string below with your actual production Google Forms URL
+    google_form_url = "https://forms.google.com" 
+    
+    st.link_button(
+        label="🚀 Launch Comprehensive Strategy Expansion Form", 
+        url=google_form_url,
+        use_container_width=True
+    )
